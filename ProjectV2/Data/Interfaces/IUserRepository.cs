@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Interfaces
 {
-    public class IUserRepository
+    public interface IUserRepository
     {
     }
 }

@@ -26,11 +26,12 @@ namespace ProjectV2
         {
             services.AddControllers();
             services.AddCors();
-            services.AddDbContext<schedule_dbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddDbContext<schedule_dbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }

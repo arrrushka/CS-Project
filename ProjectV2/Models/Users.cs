@@ -11,8 +11,10 @@ namespace ProjectV2.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
-        public int? Course { get; set; }
+        public int Course { get; set; }
         public string Group { get; set; }
         public string Role { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
     }
 }
