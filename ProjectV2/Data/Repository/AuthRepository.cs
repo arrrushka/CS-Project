@@ -49,7 +49,9 @@ namespace ProjectV2.Data.Repository
 
         public Users Login(string username, string password)
         {
-            throw new NotImplementedException();
+            var user = _DbContext.Users.FirstOrDefault(x => x.Username == username);
+            if (user == null || !VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) return null;
+            return user;
         }
     }
 }

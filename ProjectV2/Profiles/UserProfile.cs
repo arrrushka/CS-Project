@@ -13,6 +13,7 @@ namespace ProjectV2.Profiles
         public UserProfile()
         {
             CreateMap<Users, UserRegisterDTO>();
+            CreateMap<Users, UserLoginDTO>();
         }
     }
 }
