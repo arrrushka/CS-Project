@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ProjectV2.Models
+﻿namespace ProjectV2.Models
 {
     public partial class Users
     {

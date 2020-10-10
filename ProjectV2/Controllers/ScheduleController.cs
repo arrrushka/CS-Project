@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectV2.Data.Interfaces;
 using ProjectV2.DTOs;
 using ProjectV2.Models;
+using System.Collections.Generic;
 
 namespace ProjectV2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Schedule")]
     [ApiController]
     public class ScheduleController : ControllerBase
     {
@@ -31,13 +27,6 @@ namespace ProjectV2.Controllers
             _userRepository = userRepository;
 
             _mapper = mapper;
-        }
-
-        [HttpGet]
-        public ActionResult<IEnumerable<Users>> GetStudents()
-        {
-            var studs = _studentRepository.GetStudents();
-            return Ok(_mapper.Map<IEnumerable<StudentDTO>>(studs));
         }
     }
 }
