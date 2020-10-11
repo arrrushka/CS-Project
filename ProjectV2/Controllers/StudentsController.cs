@@ -17,31 +17,26 @@ namespace ProjectV2.Controllers
     public class StudentsController : ControllerBase
     {
         private readonly IStudentRepository _studentRepository;
-        private readonly ITeacherRepository _teacherRepository;
-        private readonly IScheduleRepository _scheduleRepository;
-        private readonly IUserRepository _userRepository;
 
         private readonly IMapper _mapper;
 
-        public StudentsController(IStudentRepository studentRepository, ITeacherRepository teacherRepository, IScheduleRepository scheduleRepository, IUserRepository userRepository, IMapper mapper)
+        public StudentsController(IStudentRepository studentRepository, IUserRepository userRepository, IMapper mapper)
         {
             _studentRepository = studentRepository;
-            _teacherRepository = teacherRepository;
-            _scheduleRepository = scheduleRepository;
-            _userRepository = userRepository;
 
             _mapper = mapper;
         }
 
-        [Authorize(Roles = Role.Teacher)]
-        [HttpGet("students")]
+        [Authorize(Roles = "Teacher , Admin")]
+        [HttpGet("GetAllStudents")]
         public ActionResult<IEnumerable<Users>> GetStudents()
         {
             var studs = _studentRepository.GetStudents();
+            if (studs == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<StudentDTO>>(studs));
         }
 
-        [Authorize(Roles = Role.Teacher)]
+        [Authorize(Roles = "Teacher , Admin")]
         [HttpGet("GetStudentByID")]
         public ActionResult<IEnumerable<Users>> GetStudentByID(int ID)
         {

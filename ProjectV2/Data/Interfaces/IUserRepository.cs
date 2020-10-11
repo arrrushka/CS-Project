@@ -2,5 +2,6 @@
 {
     public interface IUserRepository
     {
+        bool SetAsTeacher(string Username);
     }
 }

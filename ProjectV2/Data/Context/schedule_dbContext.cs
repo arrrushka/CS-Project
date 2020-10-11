@@ -13,7 +13,6 @@ namespace ProjectV2.Models
         {
         }
 
-        public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Schedule> Schedule { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -27,30 +26,11 @@ namespace ProjectV2.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Class>(entity =>
-            {
-                entity.ToTable("class");
-
-                entity.Property(e => e.ClassId).HasColumnName("class_id");
-
-                entity.Property(e => e.Class1)
-                    .IsRequired()
-                    .HasColumnName("class")
-                    .HasColumnType("varchar(10)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_0900_ai_ci");
-            });
-
             modelBuilder.Entity<Schedule>(entity =>
             {
                 entity.ToTable("schedule");
 
-                entity.HasIndex(e => e.ClassId)
-                    .HasName("class_id");
-
                 entity.Property(e => e.Id).HasColumnName("id");
-
-                entity.Property(e => e.ClassId).HasColumnName("class_id");
 
                 entity.Property(e => e.Day).HasColumnName("day");
 
@@ -75,12 +55,6 @@ namespace ProjectV2.Models
                 entity.Property(e => e.SubjectStart)
                     .HasColumnName("subject_start")
                     .HasColumnType("time");
-
-                entity.HasOne(d => d.Class)
-                    .WithMany(p => p.Schedule)
-                    .HasForeignKey(d => d.ClassId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("schedule_ibfk_4");
             });
 
             modelBuilder.Entity<Users>(entity =>

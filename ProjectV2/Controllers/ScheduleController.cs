@@ -12,19 +12,13 @@ namespace ProjectV2.Controllers
     [ApiController]
     public class ScheduleController : ControllerBase
     {
-        private readonly IStudentRepository _studentRepository;
-        private readonly ITeacherRepository _teacherRepository;
         private readonly IScheduleRepository _scheduleRepository;
-        private readonly IUserRepository _userRepository;
 
         private readonly IMapper _mapper;
 
-        public ScheduleController(IStudentRepository studentRepository, ITeacherRepository teacherRepository, IScheduleRepository scheduleRepository, IUserRepository userRepository, IMapper mapper)
+        public ScheduleController(IScheduleRepository scheduleRepository, IMapper mapper)
         {
-            _studentRepository = studentRepository;
-            _teacherRepository = teacherRepository;
             _scheduleRepository = scheduleRepository;
-            _userRepository = userRepository;
 
             _mapper = mapper;
         }
