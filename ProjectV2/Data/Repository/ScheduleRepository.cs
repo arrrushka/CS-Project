@@ -18,5 +18,10 @@ namespace ProjectV2.Data.Repository
         {
             return _dbContext.Schedule.Where(x => x.Group.Equals(Group));
         }
+
+        public IEnumerable<Schedule> ShowMySubjectsByDay(string Group, int Day)
+        {
+            return _dbContext.Schedule.Where(x => x.Group.Equals(Group)).Where(x => x.Day.Equals(Day));
+        }
     }
 }

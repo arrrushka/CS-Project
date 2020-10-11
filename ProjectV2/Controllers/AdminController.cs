@@ -55,5 +55,14 @@ namespace ProjectV2.Controllers
             if (update == false) return BadRequest();
             return Ok("Role changed");
         }
+
+        [Authorize(Roles = Role.SuperAdmin)]
+        [HttpPost("SetAsAdmin")]
+        public ActionResult SetAsAdmin(string Username)
+        {
+            var update = _userRepository.SetAsAdmin(Username);
+            if (update == false) return BadRequest();
+            return Ok("Role changed");
+        }
     }
 }

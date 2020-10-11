@@ -6,5 +6,7 @@ namespace ProjectV2.Data.Interfaces
     public interface IScheduleRepository
     {
         IEnumerable<Schedule> ShowMySubjects(string Group);
+
+        IEnumerable<Schedule> ShowMySubjectsByDay(string Group, int Day);
     }
 }

@@ -17,6 +17,29 @@ namespace ProjectV2.Data.Repository
             _config = config;
         }
 
+        public bool SetAsAdmin(string Username)
+        {
+            MySqlConnection connection;
+            connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
+            connection.Open();
+            MySqlCommand command;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            string sql = "Update Users set role = 'Admin' where username = '" + Username + "'";
+
+            command = new MySqlCommand(sql, connection);
+
+            adapter.UpdateCommand = new MySqlCommand(sql, connection);
+            adapter.UpdateCommand.ExecuteNonQuery();
+
+            command.Dispose();
+            connection.Close();
+
+            var check = _dbContext.Users.Where(x => x.Username == Username).Where(x => x.Role.Equals("Admin"));
+            if (check == null) return false;
+            return true;
+        }
+
         public bool SetAsTeacher(string Username)
         {
             MySqlConnection connection;

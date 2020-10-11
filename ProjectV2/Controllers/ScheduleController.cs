@@ -33,5 +33,14 @@ namespace ProjectV2.Controllers
             if (Schedule == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
         }
+
+        [Authorize(Roles = Role.Student)]
+        [HttpGet("ShowMySubjectsByDay")]
+        public ActionResult<IEnumerable<Schedule>> ShowMySubjectsByDay(int Day)
+        {
+            var Schedule = _scheduleRepository.ShowMySubjectsByDay(User.FindFirstValue(ClaimTypes.GroupSid), Day);
+            if (Schedule == null) return NotFound();
+            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
+        }
     }
 }
