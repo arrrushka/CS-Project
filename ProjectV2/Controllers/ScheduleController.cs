@@ -5,9 +5,11 @@ using ProjectV2.Data.Interfaces;
 using ProjectV2.DTOs;
 using ProjectV2.Models;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace ProjectV2.Controllers
 {
+    [Authorize]
     [Route("api/Schedule")]
     [ApiController]
     public class ScheduleController : ControllerBase
@@ -21,6 +23,15 @@ namespace ProjectV2.Controllers
             _scheduleRepository = scheduleRepository;
 
             _mapper = mapper;
+        }
+
+        [Authorize(Roles = Role.Student)]
+        [HttpGet("ShowMySubjects")]
+        public ActionResult<IEnumerable<Schedule>> ShowMySubjects()
+        {
+            var Schedule = _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
+            if (Schedule == null) return NotFound();
+            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
         }
     }
 }

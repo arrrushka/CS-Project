@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectV2.Data.Interfaces;
 using ProjectV2.DTOs;
 using ProjectV2.Models;
+using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace ProjectV2.Controllers
 {
@@ -43,6 +40,24 @@ namespace ProjectV2.Controllers
             var student = _studentRepository.GetStudentByID(ID);
             if (student == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<StudentDTO>>(student));
+        }
+
+        [Authorize(Roles = "Teacher , Admin")]
+        [HttpGet("GetStudentsByGroup")]
+        public ActionResult<IEnumerable<Users>> GetStudentsByGroup(string Group)
+        {
+            var students = _studentRepository.GetStudentsByGroup(Group);
+            if (students == null) return NotFound();
+            return Ok(_mapper.Map<IEnumerable<StudentDTO>>(students));
+        }
+
+        [Authorize(Roles = Role.Student)]
+        [HttpGet("ShowMyGroupmates")]
+        public ActionResult<IEnumerable<Users>> ShowMyGroupmates()
+        {
+            var Group = _studentRepository.ShowMyGroupmates(User.FindFirstValue(ClaimTypes.GroupSid));
+            if (Group == null) return NotFound();
+            return Ok(_mapper.Map<IEnumerable<StudentDTO>>(Group));
         }
     }
 }

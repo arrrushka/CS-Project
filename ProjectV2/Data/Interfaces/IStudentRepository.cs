@@ -8,5 +8,9 @@ namespace ProjectV2.Data.Interfaces
         IEnumerable<Users> GetStudents();
 
         IEnumerable<Users> GetStudentByID(int ID);
+
+        IEnumerable<Users> GetStudentsByGroup(string Group);
+
+        IEnumerable<Users> ShowMyGroupmates(string Group);
     }
 }

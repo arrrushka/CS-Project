@@ -4,11 +4,11 @@ using ProjectV2.Models;
 
 namespace ProjectV2.Profiles
 {
-    public class TeacherProfile : Profile
+    public class ScheduleProfile : Profile
     {
-        public TeacherProfile()
+        public ScheduleProfile()
         {
-            CreateMap<Users, TeacherDTO>();
+            CreateMap<Schedule, ScheduleDTO>();
         }
     }
 }

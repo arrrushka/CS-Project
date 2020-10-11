@@ -14,6 +14,11 @@ namespace ProjectV2.Data.Repository
             _dbContext = schedule_DbContext;
         }
 
+        public IEnumerable<Users> GetStudentsByGroup(string Group)
+        {
+            return _dbContext.Users.Where(s => s.Role.Equals("Student")).Where(s => s.Group.Equals(Group));
+        }
+
         public IEnumerable<Users> GetStudentByID(int ID)
         {
             return _dbContext.Users.Where(s => s.Role.Equals("Student")).Where(s => s.UserId.Equals(ID));
@@ -22,6 +27,11 @@ namespace ProjectV2.Data.Repository
         public IEnumerable<Users> GetStudents()
         {
             return _dbContext.Users.Where(s => s.Role.Equals("Student"));
+        }
+
+        public IEnumerable<Users> ShowMyGroupmates(string Group)
+        {
+            return _dbContext.Users.Where(s => s.Group.Equals(Group));
         }
     }
 }
