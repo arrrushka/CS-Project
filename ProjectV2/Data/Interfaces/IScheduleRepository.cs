@@ -1,12 +1,13 @@
 ﻿using ProjectV2.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Interfaces
 {
     public interface IScheduleRepository
     {
-        IEnumerable<Schedule> ShowMySubjects(string Group);
+        Task<IEnumerable<Schedule>> ShowMySubjects(string Group);
 
-        IEnumerable<Schedule> ShowMySubjectsByDay(string Group, int Day);
+        Task<IEnumerable<Schedule>> ShowMySubjectsByDay(string Group, int Day);
     }
 }

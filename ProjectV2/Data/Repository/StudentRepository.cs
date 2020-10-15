@@ -1,7 +1,9 @@
-﻿using ProjectV2.Data.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectV2.Data.Interfaces;
 using ProjectV2.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Repository
 {
@@ -14,24 +16,24 @@ namespace ProjectV2.Data.Repository
             _dbContext = schedule_DbContext;
         }
 
-        public IEnumerable<Users> GetStudentsByGroup(string Group)
+        public async Task<IEnumerable<Users>> GetStudentsByGroup(string Group)
         {
-            return _dbContext.Users.Where(s => s.Role.Equals("Student")).Where(s => s.Group.Equals(Group));
+            return await _dbContext.Users.Where(s => s.Role.Equals("Student")).Where(s => s.Group.Equals(Group)).ToListAsync();
         }
 
-        public IEnumerable<Users> GetStudentByID(int ID)
+        public async Task<IEnumerable<Users>> GetStudentByID(int ID)
         {
-            return _dbContext.Users.Where(s => s.Role.Equals("Student")).Where(s => s.UserId.Equals(ID));
+            return await _dbContext.Users.Where(s => s.Role.Equals("Student")).Where(s => s.UserId.Equals(ID)).ToListAsync();
         }
 
-        public IEnumerable<Users> GetStudents()
+        public async Task<IEnumerable<Users>> GetStudents()
         {
-            return _dbContext.Users.Where(s => s.Role.Equals("Student"));
+            return await _dbContext.Users.Where(s => s.Role.Equals("Student")).ToArrayAsync();
         }
 
-        public IEnumerable<Users> ShowMyGroupmates(string Group)
+        public async Task<IEnumerable<Users>> ShowMyGroupmates(string Group)
         {
-            return _dbContext.Users.Where(s => s.Group.Equals(Group));
+            return await _dbContext.Users.Where(s => s.Group.Equals(Group)).ToArrayAsync();
         }
     }
 }

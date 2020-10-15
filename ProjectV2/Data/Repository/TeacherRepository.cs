@@ -1,7 +1,9 @@
-﻿using ProjectV2.Data.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectV2.Data.Interfaces;
 using ProjectV2.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Repository
 {
@@ -14,14 +16,14 @@ namespace ProjectV2.Data.Repository
             _dbContext = schedule_DbContext;
         }
 
-        public IEnumerable<Users> GetTeacherByID(int ID)
+        public async Task<IEnumerable<Users>> GetTeacherByID(int ID)
         {
-            return _dbContext.Users.Where(s => s.Role.Equals("Teacher")).Where(s => s.UserId.Equals(ID));
+            return await _dbContext.Users.Where(s => s.Role.Equals("Teacher")).Where(s => s.UserId.Equals(ID)).ToListAsync();
         }
 
-        public IEnumerable<Users> GetTeachers()
+        public async Task<IEnumerable<Users>> GetTeachers()
         {
-            return _dbContext.Users.Where(t => t.Role.Equals("Teacher"));
+            return await _dbContext.Users.Where(t => t.Role.Equals("Teacher")).ToArrayAsync();
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using ProjectV2.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Interfaces
 {
     public interface ITeacherRepository
     {
-        IEnumerable<Users> GetTeachers();
+        Task<IEnumerable<Users>> GetTeachers();
 
-        IEnumerable<Users> GetTeacherByID(int ID);
+        Task<IEnumerable<Users>> GetTeacherByID(int ID);
     }
 }

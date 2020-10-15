@@ -1,7 +1,9 @@
-﻿using ProjectV2.Data.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectV2.Data.Interfaces;
 using ProjectV2.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Repository
 {
@@ -14,14 +16,14 @@ namespace ProjectV2.Data.Repository
             _dbContext = schedule_DbContext;
         }
 
-        public IEnumerable<Schedule> ShowMySubjects(string Group)
+        public async Task<IEnumerable<Schedule>> ShowMySubjects(string Group)
         {
-            return _dbContext.Schedule.Where(x => x.Group.Equals(Group));
+            return await _dbContext.Schedule.Where(x => x.Group.Equals(Group)).ToArrayAsync();
         }
 
-        public IEnumerable<Schedule> ShowMySubjectsByDay(string Group, int Day)
+        public async Task<IEnumerable<Schedule>> ShowMySubjectsByDay(string Group, int Day)
         {
-            return _dbContext.Schedule.Where(x => x.Group.Equals(Group)).Where(x => x.Day.Equals(Day));
+            return await _dbContext.Schedule.Where(x => x.Group.Equals(Group)).Where(x => x.Day.Equals(Day)).ToArrayAsync();
         }
     }
 }

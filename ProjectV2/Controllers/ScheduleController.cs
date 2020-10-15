@@ -6,6 +6,7 @@ using ProjectV2.DTOs;
 using ProjectV2.Models;
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Controllers
 {
@@ -27,18 +28,18 @@ namespace ProjectV2.Controllers
 
         [Authorize(Roles = Role.Student)]
         [HttpGet("ShowMySubjects")]
-        public ActionResult<IEnumerable<Schedule>> ShowMySubjects()
+        public async Task<ActionResult<IEnumerable<Schedule>>> ShowMySubjects()
         {
-            var Schedule = _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
+            var Schedule = await _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
             if (Schedule == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
         }
 
         [Authorize(Roles = Role.Student)]
         [HttpGet("ShowMySubjectsByDay")]
-        public ActionResult<IEnumerable<Schedule>> ShowMySubjectsByDay(int Day)
+        public async Task<ActionResult<IEnumerable<Schedule>>> ShowMySubjectsByDay(int Day)
         {
-            var Schedule = _scheduleRepository.ShowMySubjectsByDay(User.FindFirstValue(ClaimTypes.GroupSid), Day);
+            var Schedule = await _scheduleRepository.ShowMySubjectsByDay(User.FindFirstValue(ClaimTypes.GroupSid), Day);
             if (Schedule == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
         }

@@ -5,6 +5,7 @@ using ProjectV2.Data.Interfaces;
 using ProjectV2.DTOs;
 using ProjectV2.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Controllers
 {
@@ -29,25 +30,25 @@ namespace ProjectV2.Controllers
             _mapper = mapper;
         }
 
-        [Authorize(Roles = Role.Admin)]
+        [Authorize(Roles = "Admin , SuperAdmin")]
         [HttpGet("GetAllTeachers")]
-        public ActionResult<IEnumerable<Users>> GetAllTeachers()
+        public async Task<ActionResult<IEnumerable<Users>>> GetAllTeachers()
         {
-            var Teachers = _teacherRepository.GetTeachers();
+            var Teachers = await _teacherRepository.GetTeachers();
             if (Teachers == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<TeacherDTO>>(Teachers));
         }
 
-        [Authorize(Roles = Role.Admin)]
+        [Authorize(Roles = "Admin , SuperAdmin")]
         [HttpGet("GetTeacherByID")]
-        public ActionResult<IEnumerable<Users>> GeTeacherID(int ID)
+        public async Task<ActionResult<IEnumerable<Users>>> GeTeacherID(int ID)
         {
-            var Teacher = _teacherRepository.GetTeacherByID(ID);
+            var Teacher = await _teacherRepository.GetTeacherByID(ID);
             if (Teacher == null) return NotFound();
             return Ok(_mapper.Map<IEnumerable<TeacherDTO>>(Teacher));
         }
 
-        [Authorize(Roles = Role.Admin)]
+        [Authorize(Roles = "Admin , SuperAdmin")]
         [HttpPost("SetAsTeacher")]
         public ActionResult SetAsTeacher(string Username)
         {
