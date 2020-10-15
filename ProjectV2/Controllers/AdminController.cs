@@ -50,18 +50,18 @@ namespace ProjectV2.Controllers
 
         [Authorize(Roles = "Admin , SuperAdmin")]
         [HttpPost("SetAsTeacher")]
-        public ActionResult SetAsTeacher(string Username)
+        public async Task<ActionResult> SetAsTeacher(string Username)
         {
-            var update = _userRepository.SetAsTeacher(Username);
+            var update = await _userRepository.SetAsTeacher(Username);
             if (update == false) return BadRequest();
             return Ok("Role changed");
         }
 
         [Authorize(Roles = Role.SuperAdmin)]
         [HttpPost("SetAsAdmin")]
-        public ActionResult SetAsAdmin(string Username)
+        public async Task<ActionResult> SetAsAdmin(string Username)
         {
-            var update = _userRepository.SetAsAdmin(Username);
+            var update = await _userRepository.SetAsAdmin(Username);
             if (update == false) return BadRequest();
             return Ok("Role changed");
         }

@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using ProjectV2.Data.Interfaces;
 using ProjectV2.Models;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Repository
 {
@@ -17,50 +21,18 @@ namespace ProjectV2.Data.Repository
             _config = config;
         }
 
-        public bool SetAsAdmin(string Username)
+        public async Task<bool> SetAsAdmin(string Username)
         {
-            MySqlConnection connection;
-            connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            connection.Open();
-            MySqlCommand command;
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            string sql = "Update Users set role = 'Admin' where username = '" + Username + "'";
-
-            command = new MySqlCommand(sql, connection);
-
-            adapter.UpdateCommand = new MySqlCommand(sql, connection);
-            adapter.UpdateCommand.ExecuteNonQuery();
-
-            command.Dispose();
-            connection.Close();
-
-            var check = _dbContext.Users.Where(x => x.Username == Username).Where(x => x.Role.Equals("Admin"));
-            if (check == null) return false;
-            return true;
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username.Equals(Username));
+            user.Role = "Admin";
+            return _dbContext.SaveChanges() > 0;
         }
 
-        public bool SetAsTeacher(string Username)
+        public async Task<bool> SetAsTeacher(string Username)
         {
-            MySqlConnection connection;
-            connection = new MySqlConnection(_config.GetConnectionString("DefaultConnection"));
-            connection.Open();
-            MySqlCommand command;
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            string sql = "Update Users set role = 'Teacher' where username = '" + Username + "'";
-
-            command = new MySqlCommand(sql, connection);
-
-            adapter.UpdateCommand = new MySqlCommand(sql, connection);
-            adapter.UpdateCommand.ExecuteNonQuery();
-
-            command.Dispose();
-            connection.Close();
-
-            var check = _dbContext.Users.Where(x => x.Username == Username).Where(x => x.Role.Equals("Teacher"));
-            if (check == null) return false;
-            return true;
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Username.Equals(Username));
+            user.Role = "Teacher";
+            return _dbContext.SaveChanges() > 0;
         }
     }
 }

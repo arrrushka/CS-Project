@@ -1,4 +1,7 @@
-﻿namespace ProjectV2.Models
+﻿using System;
+using System.Threading.Tasks;
+
+namespace ProjectV2.Models
 {
     public partial class Users
     {

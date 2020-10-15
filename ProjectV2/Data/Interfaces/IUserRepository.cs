@@ -1,9 +1,11 @@
-﻿namespace ProjectV2.Data.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace ProjectV2.Data.Interfaces
 {
     public interface IUserRepository
     {
-        bool SetAsTeacher(string Username);
+        Task<bool> SetAsTeacher(string Username);
 
-        bool SetAsAdmin(string Username);
+        Task<bool> SetAsAdmin(string Username);
     }
 }
