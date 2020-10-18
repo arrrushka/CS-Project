@@ -20,7 +20,7 @@ namespace ProjectV2.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=123456;database=schedule_db;persistsecurityinfo=True;allowuservariables=True", x => x.ServerVersion("8.0.21-mysql"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;password=123456;database=schedule_db;persistsecurityinfo=True", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
@@ -30,7 +30,17 @@ namespace ProjectV2.Models
             {
                 entity.ToTable("schedule");
 
+                entity.HasIndex(e => e.Class)
+                    .HasName("class_id");
+
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Class)
+                    .IsRequired()
+                    .HasColumnName("class")
+                    .HasColumnType("varchar(15)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_0900_ai_ci");
 
                 entity.Property(e => e.Day).HasColumnName("day");
 
@@ -55,6 +65,8 @@ namespace ProjectV2.Models
                 entity.Property(e => e.SubjectStart)
                     .HasColumnName("subject_start")
                     .HasColumnType("time");
+
+                entity.Property(e => e.Teacher).HasColumnName("teacher");
             });
 
             modelBuilder.Entity<Users>(entity =>
@@ -95,8 +107,15 @@ namespace ProjectV2.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_0900_ai_ci");
 
+                entity.Property(e => e.PasswordHash)
+                    .HasColumnName("passwordhash")
+                    .HasColumnType("blob");
+
+                entity.Property(e => e.PasswordSalt)
+                    .HasColumnName("passwordsalt")
+                    .HasColumnType("blob");
+
                 entity.Property(e => e.Role)
-                    .IsRequired()
                     .HasColumnName("role")
                     .HasColumnType("varchar(100)")
                     .HasCharSet("utf8mb4")

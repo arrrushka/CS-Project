@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MySql.Data.MySqlClient;
 using ProjectV2.Data.Interfaces;
 using ProjectV2.Models;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjectV2.Data.Repository

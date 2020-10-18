@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace ProjectV2.Models
+namespace ProjectV2.DTOs
 {
-    public partial class Schedule
+    public class EventAddDTO
     {
-        public int Id { get; set; }
         public TimeSpan SubjectStart { get; set; }
         public TimeSpan SubjectEnd { get; set; }
         public int Day { get; set; }

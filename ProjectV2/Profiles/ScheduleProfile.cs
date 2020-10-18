@@ -9,6 +9,7 @@ namespace ProjectV2.Profiles
         public ScheduleProfile()
         {
             CreateMap<Schedule, ScheduleDTO>();
+            CreateMap<Schedule, EventAddDTO>();
         }
     }
 }

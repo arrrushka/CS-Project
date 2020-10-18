@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace ProjectV2.Models
+﻿namespace ProjectV2.Models
 {
     public partial class Users
     {
@@ -10,7 +7,7 @@ namespace ProjectV2.Models
         public string Lastname { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public int Course { get; set; }
+        public int? Course { get; set; }
         public string Group { get; set; }
         public string Role { get; set; }
         public byte[] PasswordHash { get; set; }
