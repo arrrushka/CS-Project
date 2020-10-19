@@ -30,7 +30,7 @@ namespace ProjectV2.Controllers
         public async Task<ActionResult<IEnumerable<Users>>> GetStudents()
         {
             var studs = await _studentRepository.GetStudents();
-            if (studs == null) return NotFound();
+            if (studs == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<StudentDTO>>(studs));
         }
 
@@ -39,7 +39,7 @@ namespace ProjectV2.Controllers
         public async Task<ActionResult<IEnumerable<Users>>> GetStudentByID(int ID)
         {
             var student = await _studentRepository.GetStudentByID(ID);
-            if (student == null) return NotFound();
+            if (student == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<StudentDTO>>(student));
         }
 
@@ -48,7 +48,7 @@ namespace ProjectV2.Controllers
         public async Task<ActionResult<IEnumerable<Users>>> GetStudentsByGroup(string Group)
         {
             var students = await _studentRepository.GetStudentsByGroup(Group);
-            if (students == null) return NotFound();
+            if (students == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<StudentDTO>>(students));
         }
 
@@ -57,7 +57,7 @@ namespace ProjectV2.Controllers
         public async Task<ActionResult<IEnumerable<Users>>> ShowMyGroupmates()
         {
             var Group = await _studentRepository.ShowMyGroupmates(User.FindFirstValue(ClaimTypes.GroupSid));
-            if (Group == null) return NotFound();
+            if (Group == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<StudentDTO>>(Group));
         }
     }

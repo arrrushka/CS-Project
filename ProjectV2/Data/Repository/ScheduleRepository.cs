@@ -2,6 +2,7 @@
 using ProjectV2.Data.Interfaces;
 using ProjectV2.DTOs;
 using ProjectV2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,10 +20,13 @@ namespace ProjectV2.Data.Repository
 
         public Schedule AddEvent(EventAddDTO newEvent)
         {
+            var SubStart = TimeSpan.Parse(newEvent.SubjectStart);
+            var SubEnd = TimeSpan.Parse(newEvent.SubjectEnd);
+
             var Event = new Schedule
             {
-                SubjectStart = newEvent.SubjectStart,
-                SubjectEnd = newEvent.SubjectEnd,
+                SubjectStart = SubStart,
+                SubjectEnd = SubEnd,
                 Day = newEvent.Day,
                 Class = newEvent.Class,
                 Group = newEvent.Group,

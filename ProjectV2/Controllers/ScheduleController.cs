@@ -32,7 +32,7 @@ namespace ProjectV2.Controllers
         {
             var Schedule = await _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
 
-            if (Schedule == null) return NotFound();
+            if (Schedule == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
         }
 
@@ -41,7 +41,7 @@ namespace ProjectV2.Controllers
         public async Task<ActionResult<IEnumerable<Schedule>>> ShowMySubjectsByDay(int Day)
         {
             var Schedule = await _scheduleRepository.ShowMySubjectsByDay(User.FindFirstValue(ClaimTypes.GroupSid), Day);
-            if (Schedule == null) return NotFound();
+            if (Schedule == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
         }
 
@@ -50,7 +50,7 @@ namespace ProjectV2.Controllers
         public ActionResult AddEvent(EventAddDTO newEvent)
         {
             var Event = _scheduleRepository.AddEvent(newEvent);
-            if (Event == null) return BadRequest();
+            if (Event == null) return BadRequest("Oops, something went wrong...");
             return StatusCode(201);
         }
     }
