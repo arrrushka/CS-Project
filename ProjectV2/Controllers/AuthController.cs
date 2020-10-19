@@ -38,7 +38,8 @@ namespace ProjectV2.Controllers
                 Lastname = userRegisterDTO.Lastname,
                 Username = userRegisterDTO.Username,
                 Group = userRegisterDTO.Group,
-                Email = userRegisterDTO.Email
+                Email = userRegisterDTO.Email,
+                Role = "Student"
             };
 
             var createdStudent = _authRepository.Register(studentToCreate, userRegisterDTO.Password);
