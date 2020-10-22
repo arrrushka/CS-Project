@@ -27,6 +27,7 @@ namespace ProjectV2.Controllers
             _studentRepository = studentRepository;
             _teacherRepository = teacherRepository;
             _userRepository = userRepository;
+
             _mapper = mapper;
         }
 
