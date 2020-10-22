@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectV2.Data.Interfaces;
-using ProjectV2.DTOs;
 using ProjectV2.Models;
+using ProjectV2.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

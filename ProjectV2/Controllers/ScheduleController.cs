@@ -30,19 +30,19 @@ namespace ProjectV2.Controllers
         [HttpGet("ShowMySubjects")]
         public async Task<ActionResult<IEnumerable<Schedule>>> ShowMySubjects()
         {
-            var Schedule = await _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
+            var schedule = await _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
 
-            if (Schedule == null) return NotFound("Oops, something went wrong...");
-            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
+            if (schedule == null) return NotFound("Oops, something went wrong...");
+            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(schedule));
         }
 
         [Authorize(Roles = Role.Student)]
         [HttpGet("ShowMySubjectsByDay")]
-        public async Task<ActionResult<IEnumerable<Schedule>>> ShowMySubjectsByDay(int Day)
+        public async Task<ActionResult<IEnumerable<Schedule>>> ShowMySubjectsByDay(int day)
         {
-            var Schedule = await _scheduleRepository.ShowMySubjectsByDay(User.FindFirstValue(ClaimTypes.GroupSid), Day);
-            if (Schedule == null) return NotFound("Oops, something went wrong...");
-            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(Schedule));
+            var schedule = await _scheduleRepository.ShowMySubjectsByDay(User.FindFirstValue(ClaimTypes.GroupSid), day);
+            if (schedule == null) return NotFound("Oops, something went wrong...");
+            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(schedule));
         }
 
         [Authorize(Roles = "Admin , SuperAdmin")]
