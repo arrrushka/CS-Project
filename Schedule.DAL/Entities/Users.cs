@@ -1,4 +1,4 @@
-﻿namespace ProjectV2.Models
+﻿namespace ScheduleProject.DAL.Entities
 {
     public partial class Users
     {

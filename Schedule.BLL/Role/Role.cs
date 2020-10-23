@@ -1,4 +1,4 @@
-﻿namespace ProjectV2.Models
+﻿namespace ScheduleProject.BLL.Role
 {
     public static class Role
     {

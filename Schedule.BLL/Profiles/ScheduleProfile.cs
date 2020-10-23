@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using ProjectV2.DTOs;
-using ProjectV2.Models;
+using ScheduleProject.BLL.DTOs;
+using ScheduleProject.DAL.Entities;
 
-namespace ProjectV2.Profiles
+namespace ScheduleProject.BLL.Profiles
 {
     public class ScheduleProfile : Profile
     {
         public ScheduleProfile()
         {
-            CreateMap<Schedule, ScheduleDTO>();
-            CreateMap<Schedule, EventAddDTO>();
+            CreateMap<ScheduleModel, ScheduleDTO>();
+            CreateMap<ScheduleModel, EventAddDTO>();
         }
     }
 }

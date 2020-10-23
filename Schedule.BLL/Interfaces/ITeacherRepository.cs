@@ -1,8 +1,8 @@
-﻿using ProjectV2.Models;
+﻿using ScheduleProject.DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProjectV2.Data.Interfaces
+namespace ScheduleProject.BLL.Interfaces
 {
     public interface ITeacherRepository
     {

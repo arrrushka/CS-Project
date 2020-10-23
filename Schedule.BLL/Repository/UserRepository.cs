@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using ProjectV2.Data.Interfaces;
-using ProjectV2.Models;
+using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.DAL.Context;
 using System.Threading.Tasks;
 
-namespace ProjectV2.Data.Repository
+namespace ScheduleProject.BLL.Repository
 {
     public class UserRepository : IUserRepository
     {

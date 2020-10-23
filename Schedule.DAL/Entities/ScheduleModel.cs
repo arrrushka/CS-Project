@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ProjectV2.Models
+namespace ScheduleProject.DAL.Entities
 {
-    public partial class Schedule
+    public partial class ScheduleModel
     {
         public int Id { get; set; }
         public TimeSpan SubjectStart { get; set; }

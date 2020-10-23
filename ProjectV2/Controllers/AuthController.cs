@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using ProjectV2.Data.Interfaces;
-using ProjectV2.DTOs;
-using ProjectV2.Models;
+using ScheduleProject.BLL.DTOs;
+using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.DAL.Entities;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace ProjectV2.Controllers
+namespace ScheduleProject.WEB.Controller
 {
     [Route("api/Auth")]
     [ApiController]

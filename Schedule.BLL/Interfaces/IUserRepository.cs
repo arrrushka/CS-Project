@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ProjectV2.Data.Interfaces
+namespace ScheduleProject.BLL.Interfaces
 {
     public interface IUserRepository
     {

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using ProjectV2.DTOs;
-using ProjectV2.Models;
+using ScheduleProject.BLL.DTOs;
+using ScheduleProject.DAL.Entities;
 
-namespace ProjectV2.Profiles
+namespace ScheduleProject.BLL.Profiles
 {
     public class TeacherProfile : Profile
     {

@@ -7,13 +7,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using ProjectV2.Data.Interfaces;
-using ProjectV2.Data.Repository;
-using ProjectV2.Models;
+using Schedule.BLL.Repository;
+using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.BLL.Repository;
+using ScheduleProject.DAL.Context;
 using System;
 using System.Text;
 
-namespace ProjectV2
+namespace ScheduleProject.WEB
 {
     public class Startup
     {
@@ -34,7 +35,7 @@ namespace ProjectV2
             services.AddScoped<IScheduleRepository, ScheduleRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
-            
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

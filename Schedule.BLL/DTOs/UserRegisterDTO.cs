@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjectV2.DTOs
+namespace ScheduleProject.BLL.DTOs
 {
     public class UserRegisterDTO
     {
@@ -20,6 +20,7 @@ namespace ProjectV2.DTOs
         [Required]
         [StringLength(15, MinimumLength = 8, ErrorMessage = "Password length must be between 8 and 15")]
         public string Password { get; set; }
+
         public String Group { get; set; }
     }
 }

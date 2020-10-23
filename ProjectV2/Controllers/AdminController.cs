@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProjectV2.Data.Interfaces;
-using ProjectV2.DTOs;
-using ProjectV2.Models;
+using ScheduleProject.BLL.DTOs;
+using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.BLL.Role;
+using ScheduleProject.DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProjectV2.Controllers
+namespace ScheduleProject.WEB.Controller
 {
     [Authorize]
     [Route("api/Admin")]

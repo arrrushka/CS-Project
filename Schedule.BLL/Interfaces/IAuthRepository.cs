@@ -1,6 +1,6 @@
-﻿using ProjectV2.Models;
+﻿using ScheduleProject.DAL.Entities;
 
-namespace ProjectV2.Data.Interfaces
+namespace ScheduleProject.BLL.Interfaces
 {
     public interface IAuthRepository
     {

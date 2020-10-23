@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProjectV2.DTOs
+namespace ScheduleProject.BLL.DTOs
 {
     public class ScheduleDTO
     {

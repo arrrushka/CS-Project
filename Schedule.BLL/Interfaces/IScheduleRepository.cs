@@ -1,16 +1,16 @@
-﻿using ProjectV2.DTOs;
-using ProjectV2.Models;
+﻿using ScheduleProject.BLL.DTOs;
+using ScheduleProject.DAL.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProjectV2.Data.Interfaces
+namespace ScheduleProject.BLL.Interfaces
 {
     public interface IScheduleRepository
     {
-        Task<IEnumerable<Schedule>> ShowMySubjects(string Group);
+        Task<IEnumerable<ScheduleModel>> ShowMySubjects(string Group);
 
-        Task<IEnumerable<Schedule>> ShowMySubjectsByDay(string Group, int Day);
+        Task<IEnumerable<ScheduleModel>> ShowMySubjectsByDay(string Group, int Day);
 
-        Schedule AddEvent(EventAddDTO newEvent);
+        ScheduleModel AddEvent(EventAddDTO newEvent);
     }
 }

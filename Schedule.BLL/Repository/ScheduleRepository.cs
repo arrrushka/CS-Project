@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectV2.Data.Interfaces;
-using ProjectV2.Models;
-using ProjectV2.DTOs;
+using ScheduleProject.BLL.DTOs;
+using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.DAL.Context;
+using ScheduleProject.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectV2.Data.Repository
+namespace ScheduleProject.BLL.Repository
 {
     public class ScheduleRepository : IScheduleRepository
     {
@@ -18,12 +19,12 @@ namespace ProjectV2.Data.Repository
             _dbContext = schedule_DbContext;
         }
 
-        public Schedule AddEvent(EventAddDTO newEvent)
+        public ScheduleModel AddEvent(EventAddDTO newEvent)
         {
             var SubStart = TimeSpan.Parse(newEvent.SubjectStart);
             var SubEnd = TimeSpan.Parse(newEvent.SubjectEnd);
 
-            var Event = new Schedule
+            var Event = new ScheduleModel
             {
                 SubjectStart = SubStart,
                 SubjectEnd = SubEnd,
@@ -40,12 +41,12 @@ namespace ProjectV2.Data.Repository
             return Event;
         }
 
-        public async Task<IEnumerable<Schedule>> ShowMySubjects(string Group)
+        public async Task<IEnumerable<ScheduleModel>> ShowMySubjects(string Group)
         {
             return await _dbContext.Schedule.Where(x => x.Group.Equals(Group)).ToArrayAsync();
         }
 
-        public async Task<IEnumerable<Schedule>> ShowMySubjectsByDay(string Group, int Day)
+        public async Task<IEnumerable<ScheduleModel>> ShowMySubjectsByDay(string Group, int Day)
         {
             return await _dbContext.Schedule.Where(x => x.Group.Equals(Group)).Where(x => x.Day.Equals(Day)).ToArrayAsync();
         }

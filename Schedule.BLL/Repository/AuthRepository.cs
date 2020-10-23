@@ -1,9 +1,10 @@
-﻿using ProjectV2.Data.Interfaces;
-using ProjectV2.Models;
+﻿using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.DAL.Context;
+using ScheduleProject.DAL.Entities;
 using System;
 using System.Linq;
 
-namespace ProjectV2.Data.Repository
+namespace ScheduleProject.BLL.Repository
 {
     public class AuthRepository : IAuthRepository
     {

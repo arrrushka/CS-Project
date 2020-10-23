@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ScheduleProject.DAL.Entities;
 
-namespace ProjectV2.Models
+namespace ScheduleProject.DAL.Context
 {
     public partial class schedule_dbContext : DbContext
     {
@@ -13,7 +14,7 @@ namespace ProjectV2.Models
         {
         }
 
-        public virtual DbSet<Schedule> Schedule { get; set; }
+        public virtual DbSet<ScheduleModel> Schedule { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,7 +27,7 @@ namespace ProjectV2.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Schedule>(entity =>
+            modelBuilder.Entity<ScheduleModel>(entity =>
             {
                 entity.ToTable("schedule");
 
