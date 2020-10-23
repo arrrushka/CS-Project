@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleProject.WEB", "ProjectV2\ScheduleProject.WEB.csproj", "{841E82B1-7F81-4B62-B507-11FD58663209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleProject.WEB", "Schedule.WEB\ScheduleProject.WEB.csproj", "{841E82B1-7F81-4B62-B507-11FD58663209}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduleProject.DAL", "Schedule.DAL\ScheduleProject.DAL.csproj", "{8953A969-D6A5-43C2-92E9-AA0690BA7457}"
 EndProject
