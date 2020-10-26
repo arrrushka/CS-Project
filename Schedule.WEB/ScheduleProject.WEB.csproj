@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Schedule.BLL\ScheduleProject.BLL.csproj" />
+    <ProjectReference Include="..\Schedule.DAL\ScheduleProject.DAL.csproj" />
   </ItemGroup>
 
 

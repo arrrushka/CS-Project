@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ScheduleProject.DAL.Entities;
 using ScheduleProject.BLL.Interfaces;
 using ScheduleProject.DAL.Context;
-using ScheduleProject.DAL.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ScheduleProject.BLL.Repository
+namespace ScheduleProject.DAL.Repository
 {
     public class StudentRepository : IStudentRepository
     {

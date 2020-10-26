@@ -4,7 +4,7 @@ using ScheduleProject.DAL.Entities;
 using System;
 using System.Linq;
 
-namespace ScheduleProject.BLL.Repository
+namespace ScheduleProject.DAL.Repository
 {
     public class AuthRepository : IAuthRepository
     {

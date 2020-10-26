@@ -4,7 +4,7 @@ using ScheduleProject.BLL.Interfaces;
 using ScheduleProject.DAL.Context;
 using System.Threading.Tasks;
 
-namespace ScheduleProject.BLL.Repository
+namespace ScheduleProject.DAL.Repository
 {
     public class UserRepository : IUserRepository
     {

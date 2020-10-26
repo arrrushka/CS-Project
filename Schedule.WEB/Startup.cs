@@ -3,16 +3,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using ScheduleProject.DAL.Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Schedule.BLL.Repository;
 using ScheduleProject.BLL.Interfaces;
-using ScheduleProject.BLL.Repository;
-using ScheduleProject.DAL.Context;
 using System;
 using System.Text;
+using ScheduleProject.DAL.Repository;
 
 namespace ScheduleProject.WEB
 {

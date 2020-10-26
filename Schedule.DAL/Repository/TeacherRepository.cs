@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Schedule.BLL.Repository
+namespace ScheduleProject.DAL.Repository
 {
     public class TeacherRepository : ITeacherRepository
     {

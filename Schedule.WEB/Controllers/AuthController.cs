@@ -2,8 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ScheduleProject.BLL.DTOs;
-using ScheduleProject.BLL.Interfaces;
 using ScheduleProject.DAL.Entities;
+using ScheduleProject.BLL.Interfaces;
+using ScheduleProject.DAL.Repository;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleProject.BLL.DTOs;
+using ScheduleProject.DAL.Entities;
 using ScheduleProject.BLL.Interfaces;
 using ScheduleProject.BLL.Role;
-using ScheduleProject.DAL.Entities;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
