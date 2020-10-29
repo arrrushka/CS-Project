@@ -35,6 +35,8 @@ namespace ScheduleProject.DAL.Repository
                 Teacher = newEvent.Teacher
             };
 
+            if (_dbContext.Schedule.Any(x => x.Teacher.Equals(Event.Teacher) && x.Day.Equals(Event.Day) && (x.SubjectStart <= Event.SubjectStart && x.SubjectEnd >= Event.SubjectEnd))) return null;
+
             _dbContext.Schedule.Add(Event);
             _dbContext.SaveChanges();
 

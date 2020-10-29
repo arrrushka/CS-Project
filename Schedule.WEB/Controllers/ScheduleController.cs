@@ -51,7 +51,7 @@ namespace ScheduleProject.WEB.Controller
         public ActionResult AddEvent(EventAddDTO newEvent)
         {
             var Event = _scheduleRepository.AddEvent(newEvent);
-            if (Event == null) return BadRequest("Oops, something went wrong...");
+            if (Event == null) return BadRequest("Error : maybe this time is scheduled");
             return StatusCode(201);
         }
     }
