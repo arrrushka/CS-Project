@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Schedule</AssemblyName>
+    <UserSecretsId>5587ac60-8f27-4596-9db5-448a8b2ffd74</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

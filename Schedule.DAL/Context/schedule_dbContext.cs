@@ -21,7 +21,7 @@ namespace ScheduleProject.DAL.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;password=123456;database=schedule_db;persistsecurityinfo=True", x => x.ServerVersion("8.0.21-mysql"));
+                optionsBuilder.UseMySql("Server=projectschedule.mysql.database.azure.com; Port=3306; Database=schedule_db; Uid=dimash@projectschedule; Pwd=Dinmukhamed!; SslMode=Preferred;", x => x.ServerVersion("8.0.21-mysql"));
             }
         }
 
