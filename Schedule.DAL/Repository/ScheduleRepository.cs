@@ -6,6 +6,7 @@ using ScheduleProject.BLL.Interfaces;
 using ScheduleProject.DAL.Context;
 using ScheduleProject.DAL.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,10 +58,16 @@ namespace ScheduleProject.DAL.Repository
 
         public async Task<bool> DeleteSubjectByID(int id)
         {
-            var delete = await _dbContext.Schedule.Where(x => x.Id.Equals(id)).FirstOrDefaultAsync();
-            _dbContext.Schedule.Remove(delete);
-            var callback = await _dbContext.SaveChangesAsync() > 0;
-            return callback;
+            var delete = await _dbContext.Schedule.Where(x => x.Id == id).FirstOrDefaultAsync();
+
+            if (delete != null)
+            {
+                _dbContext.Schedule.Remove(delete);
+                _dbContext.Entry(delete).State = EntityState.Deleted;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

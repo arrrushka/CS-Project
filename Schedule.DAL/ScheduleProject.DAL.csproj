@@ -14,5 +14,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Schedule.BLL\ScheduleProject.BLL.csproj" />
   </ItemGroup>
-
 </Project>

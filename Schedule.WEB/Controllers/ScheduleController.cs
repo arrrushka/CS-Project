@@ -8,6 +8,7 @@ using ScheduleProject.BLL.Role;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace ScheduleProject.WEB.Controller
 {
@@ -56,12 +57,12 @@ namespace ScheduleProject.WEB.Controller
         }
 
         [Authorize(Roles = "Admin , SuperAdmin")]
-        [HttpPost]
-        public async Task<ActionResult> DeleteEventByID(int id)
+        [HttpPost("DeleteEventByID")]
+        public async Task<ActionResult> DeleteEventByID(int Id)
         {
-            var Deletion = await _scheduleRepository.DeleteSubjectByID(id);
-            if (Deletion) return StatusCode(201);
-            return BadRequest();
+            var callback = await _scheduleRepository.DeleteSubjectByID(Id);
+            if (callback) return Ok("Record succesfully deleted");
+            return BadRequest("Something wen wrong");
         }
     }
 }
