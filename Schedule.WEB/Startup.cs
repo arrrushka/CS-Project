@@ -28,6 +28,7 @@ namespace ScheduleProject.WEB
         {
             services.AddControllers();
             services.AddCors();
+            services.AddMvc();
             services.AddDbContext<schedule_dbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();

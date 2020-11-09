@@ -12,5 +12,7 @@ namespace ScheduleProject.BLL.Interfaces
         Task<IEnumerable<ScheduleModel>> ShowMySubjectsByDay(string Group, int Day);
 
         ScheduleModel AddEvent(EventAddDTO newEvent);
+
+        Task<bool> DeleteSubjectByID(int id);
     }
 }

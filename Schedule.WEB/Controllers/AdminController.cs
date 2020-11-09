@@ -15,17 +15,13 @@ namespace ScheduleProject.WEB.Controller
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private readonly IStudentRepository _studentRepository;
-        private readonly IScheduleRepository _scheduleRepository;
         private readonly ITeacherRepository _teacherRepository;
         private readonly IUserRepository _userRepository;
 
         private readonly IMapper _mapper;
 
-        public AdminController(IStudentRepository studentRepository, IScheduleRepository scheduleRepository, ITeacherRepository teacherRepository, IMapper mapper, IUserRepository userRepository)
+        public AdminController(ITeacherRepository teacherRepository, IMapper mapper, IUserRepository userRepository)
         {
-            _scheduleRepository = scheduleRepository;
-            _studentRepository = studentRepository;
             _teacherRepository = teacherRepository;
             _userRepository = userRepository;
 

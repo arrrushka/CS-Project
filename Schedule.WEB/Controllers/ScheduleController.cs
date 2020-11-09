@@ -54,5 +54,14 @@ namespace ScheduleProject.WEB.Controller
             if (Event == null) return BadRequest("Error : maybe this time is scheduled");
             return StatusCode(201);
         }
+
+        [Authorize(Roles = "Admin , SuperAdmin")]
+        [HttpPost]
+        public async Task<ActionResult> DeleteEventByID(int id)
+        {
+            var Deletion = await _scheduleRepository.DeleteSubjectByID(id);
+            if (Deletion) return StatusCode(201);
+            return BadRequest();
+        }
     }
 }

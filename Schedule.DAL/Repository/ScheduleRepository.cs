@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ScheduleProject.BLL.DTOs;
 using ScheduleProject.BLL.Interfaces;
 using ScheduleProject.DAL.Context;
@@ -50,7 +52,15 @@ namespace ScheduleProject.DAL.Repository
 
         public async Task<IEnumerable<ScheduleModel>> ShowMySubjectsByDay(string Group, int Day)
         {
-            return await _dbContext.Schedule.Where(x => x.Group.Equals(Group)).Where(x => x.Day.Equals(Day)).ToArrayAsync();
+            return await _dbContext.Schedule.Where(x => x.Group.Equals(Group)).Where(x => x.Day.Equals(Day)).ToListAsync();
+        }
+
+        public async Task<bool> DeleteSubjectByID(int id)
+        {
+            var delete = await _dbContext.Schedule.Where(x => x.Id.Equals(id)).FirstOrDefaultAsync();
+            _dbContext.Schedule.Remove(delete);
+            var callback = await _dbContext.SaveChangesAsync() > 0;
+            return callback;
         }
     }
 }
