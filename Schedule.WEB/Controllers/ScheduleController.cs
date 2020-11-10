@@ -8,7 +8,6 @@ using ScheduleProject.BLL.Role;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Collections;
 
 namespace ScheduleProject.WEB.Controller
 {
@@ -34,6 +33,15 @@ namespace ScheduleProject.WEB.Controller
         {
             var schedule = await _scheduleRepository.ShowMySubjects(User.FindFirstValue(ClaimTypes.GroupSid));
 
+            if (schedule == null) return NotFound("Oops, something went wrong...");
+            return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(schedule));
+        }
+
+        [Authorize(Roles = "Admin , SuperAdmin")]
+        [HttpGet("ShowGroupsSubjects")]
+        public async Task<ActionResult<IEnumerable<ScheduleModel>>> ShowGroupsSbjects(string Group)
+        {
+            var schedule = await _scheduleRepository.ShowMySubjects(Group);
             if (schedule == null) return NotFound("Oops, something went wrong...");
             return Ok(_mapper.Map<IEnumerable<ScheduleDTO>>(schedule));
         }
